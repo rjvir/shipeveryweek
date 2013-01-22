@@ -59,7 +59,7 @@ $.extend(SHIP, {
 	},
 	boundedHeight: function() {
 		var wh = $(window).height(),
-		ww = $(window).width(),
+		ww = $(window).width() * .8,
 		minBound = 450,
 		maxBound = 1600;
 		var min = Math.min(wh, ww, maxBound);
