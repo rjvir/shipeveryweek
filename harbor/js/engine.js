@@ -5,7 +5,7 @@ Parse.initialize("pNZntUqXpXVmBDqDGsW7HAAvXcIRrTQrjClmy84X", "rvxSEhXIFFbkchRGyq
 
 var SHIP = SHIP || {};
 $.extend(SHIP, {
-	heightFactor: .3,
+	heightFactor: .25,
 	shipTheBox: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
 			html1 = ") href=",
@@ -60,21 +60,25 @@ $.extend(SHIP, {
 	boundedHeight: function() {
 		var wh = $(window).height(),
 		ww = $(window).width(),
-		minBound = 300,
-		maxBound = 2000;
-		return SHIP.greatestOf([wh, ww, minBound], maxBound);
-
+		minBound = 450,
+		maxBound = 1600;
+		var min = Math.min(wh, ww, maxBound);
+		if (min < minBound) return minBound;
+		return min;
 	},
 	//only resize boat and water. otherwise raj will hit me
 	resizeBoatnWater: function(){
-		$('.boat-left').height($(window).height() * SHIP.heightFactor);
-		$('.boat-left').offset({ bottom: 0, left: 0 });
+		var scale = SHIP.boundedHeight(),
+		newHeight = scale * SHIP.heightFactor;
 
-		$('.boat-right').height($(window).height() * SHIP.heightFactor);
-		$('.boat-right').offset({ bottom: 0, right: 0 });
+		$('.boat-left').height(newHeight);
+		$('.boat-left').width(Math.floor(338 * (newHeight / 401)));
 
-		$('.boat-middle').height($(window).height() * .33 * SHIP.heightFactor);
-		$('.black-bar').width($(window).width() * .7);
+		$('.boat-right').height(scale * SHIP.heightFactor);
+		$('.boat-right').width(Math.floor(335 * (newHeight / 401)));
+
+		$('.boat-middle').height(.33 * newHeight);
+		$('.black-bar').width($(window).width() - 335*(newHeight/401));
 
 		$('.blue').height($(window).height() * .2 * SHIP.heightFactor);
 	},
@@ -101,17 +105,6 @@ $.extend(SHIP, {
           SHIP.handleResize()
         }, 50);
       });
-    },
-    greatestOf: function(a, up_bnd) {
-      if (a.length = 0) return 0;
-      max = a[0];
-      for (var i = 0; i< a.length; i++) {
-      	if (a[i] > max) {
-      		max = a[i];
-      	}
-      }
-      if (max > up_bnd) return up_bnd;
-      return max;
     },
     delay: (function(){
       var timer = 0;

@@ -3,14 +3,22 @@
 @import url('960.css');
 
 html, body {
-    background-color:#f8f8ff;
-    background-image:url(http://subtlepatterns.com/patterns/foggy_birds.png);
+    background: #6cab26;
+    background-image: url(../images/birds.png); /* fallback */
+    background-image: url(../images/birds.png), -webkit-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%); /* Chrome 10+, Saf5.1+ */
+    background-image: url(../images/birds.png),    -moz-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%); /* FF3.6+ */
+    background-image: url(../images/birds.png),     -ms-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%); /* IE10 */
+    background-image: url(../images/birds.png),     -o-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%);
+    background-image: url(../images/birds.png),         linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%);
+
     background-repeat:repeat;
 }
 
 body {
 position:relative;
 }
+
+
 
 .cargo {
     margin:20px auto;
@@ -124,6 +132,7 @@ h2 {
     position:fixed;
     width:100%;
     z-index:2;
+
 }
 
 .black-bar {
@@ -134,21 +143,27 @@ h2 {
     background-color:#000;
 }
 
+.copyright {
+    text-align: center;
+    color: #888;
+    font-size: 11px;
+}
+
 .wrapper {
     margin-left:10px;
 }
 
 .blue {
     width:100%;
-    background-color:#00a;
-    height:40px;
+    background-color:#006;
+    height:20px;
     position:fixed;
     bottom:0;
     z-index:1;
 }
 
 .boat-left, .boat-right, .boat-middle {
-    bottom:20px;
+    bottom:11px;
 }
 
 .navbar {
