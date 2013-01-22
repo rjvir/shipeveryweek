@@ -148,3 +148,14 @@ h2 {
 .boat-left, .boat-right, .boat-middle {
     bottom:20px;
 }
+
+.navbar {
+    width:100%;
+    background-color:#444;
+    padding:10px 0;
+}
+
+.header {
+    background-color:rgba(0,0,0,.05);
+    text-align:center;
+}
