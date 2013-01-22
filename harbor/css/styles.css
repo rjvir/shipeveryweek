@@ -4,15 +4,16 @@
 
 html, body {
     background-color:#f8f8ff;
-    background-image:url(../images/ship.png);
-    background-position:center bottom;
-    background-repeat:no-repeat;
 }
 
 .cargo {
     margin:20px auto;
-    width:960px;
+    width:720px;
     overflow:visible;
+}
+
+.cargo * {
+    z-index:1;
 }
 
 * {
@@ -77,11 +78,13 @@ h2 {
     width:100%;
 }
 
-.boats {
+.boat {
     background-image:url(../images/ship.png);
     background-repeat:no-repeat;
-    width:1500px;
+    width:100%;
     height:471px;
-    margin-left:-300px;
-    margin-top:-300px;
+    background-position:center center;
+    z-index:2;
+    position:fixed;
+    bottom:-100px;
 }

@@ -13,8 +13,6 @@ var wk = week1/604800000;
 
 var weekNum = Math.floor((date - week1) / 604800000);
 
-
-
 function shipTheBox(box) {
 	var html0 = "<a class=product style=background-image:url(",
 		html1 = ") href=",
@@ -45,7 +43,6 @@ function shuffleShipments(freight) {
 		shipTheBox(freight[i]);
 	};
 };
-
 
 var query = new Parse.Query(Cargo);
 query.equalTo("week", weekNum);
