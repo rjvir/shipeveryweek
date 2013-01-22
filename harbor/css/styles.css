@@ -6,6 +6,10 @@ html, body {
     background-color:#f8f8ff;
 }
 
+body {
+position:relative;
+}
+
 .cargo {
     margin:20px auto;
     width:720px;
@@ -113,4 +117,13 @@ h2 {
 
 .wrapper {
     margin-left:10px;
+}
+
+.blue {
+    width:100%;
+    background-color:#00a;
+    height:40px;
+    position:absolute;
+    bottom:0;
+    z-index:3;
 }
