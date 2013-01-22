@@ -4,11 +4,17 @@
 
 html, body {
     background-color:#f8f8ff;
+    background-image:url(../images/boat.png);
 }
 
 .cargo {
     margin:20px auto;
     width:960px;
+}
+
+.imonaboat {
+    font-size:16px;
+    font-family:'adelle';
 }
 
 h1 {
@@ -17,6 +23,53 @@ h1 {
 }
 
 h2 {
-    font-family:'futura-pt';
+    font-family:'adelle';
     font-size:28px;
+}
+
+.product {
+    width:220px;
+    height:220px;
+    display:inline-block;
+    position:relative;
+    overflow:hidden;
+}
+
+.title {
+    -webkit-transition-property: top;
+    -webkit-transition-duration: 0.5s;
+    position:absolute;
+    top:188px;
+    bottom:0;
+    text-align:center;
+    background-color:rgba(0,0,0,.6);
+    font-weight:normal;
+    font-size:16px;
+    line-height:32px;
+    display:block;
+    width:100%;
+    color:#fff;
+    height:32px;
+}
+
+.description {
+    -webkit-transition-property: bottom;
+    -webkit-transition-duration: 0.5s;
+    position:absolute;
+    height:156px;
+    bottom:-156px;
+    color:#fff;
+    background-color:rgba(0,0,0,.6);
+    padding:0 5px;
+    width:100%;
+}
+
+.product:hover .title {
+    top:0;
+    bottom:auto;
+}
+
+.product:hover .description {
+    top:32px;
+    bottom:32px;
 }
