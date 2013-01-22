@@ -43,6 +43,7 @@ h2 {
     position:relative;
     overflow:hidden;
     margin:10px;
+    background-position:center center;
 }
 
 .product-info {
@@ -75,7 +76,6 @@ h2 {
     color:#fff;
     background-color:rgba(0,0,0,.6);
     padding:10px;
-    width:100%;
 }
 
 .boat {
@@ -87,4 +87,30 @@ h2 {
     z-index:2;
     position:fixed;
     bottom:-100px;
+}
+
+.boat-left, .boat-right {
+    position:absolute;
+    bottom:0;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:bottom;
+}
+
+.boat-left {
+    background-image:url(../images/ship_left.png);
+    left:0;
+    width:338px;
+    height:251px;
+}
+
+.boat-right {
+    background-image:url(../images/ship_right.png);
+    right:0;
+    width:335px;
+    height:401px;
+}
+
+.wrapper {
+    margin-left:10px;
 }
