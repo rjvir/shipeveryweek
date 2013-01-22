@@ -15,8 +15,8 @@ var weekNum = Math.floor((date - week1) / 604800000);
 
 var html0 = "<a class=product style=background-image:url(";
 var html1 = ") href="
-var html2 = "><div class=title>"
-var html3 = "</div></a>"
+var html2 = "><div class=product-info><div class=title>"
+var html3 = "</div></div></a>"
 
 
 var query = new Parse.Query(Cargo);
