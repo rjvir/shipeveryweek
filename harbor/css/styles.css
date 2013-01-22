@@ -3,20 +3,23 @@
 @import url('960.css');
 
 html, body {
-    background: #6cab26;
-    background-image: url(../images/birds.png); /* fallback */
-    background-image: url(../images/birds.png), -webkit-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%); /* Chrome 10+, Saf5.1+ */
-    background-image: url(../images/birds.png),    -moz-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%); /* FF3.6+ */
-    background-image: url(../images/birds.png),     -ms-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%); /* IE10 */
-    background-image: url(../images/birds.png),     -o-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%);
-    background-image: url(../images/birds.png),         linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%);
-
-    background-repeat:repeat;
-    color: #222;
+    height: 100%;
 }
 
 body {
-position:relative;
+    background-attachment: fixed !important;
+    min-height:100%;
+    margin:0;
+    background: rgb(255,218,178);
+    background-image: url(../images/birds.png); /* fallback */
+    background-image: url(../images/birds.png), -webkit-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%) ; /* Chrome 10+, Saf5.1+ */
+    background-image: url(../images/birds.png),    -moz-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%) ; /* FF3.6+ */
+    background-image: url(../images/birds.png),     -ms-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%) ; /* IE10 */
+    background-image: url(../images/birds.png),     -o-linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%) ;
+    background-image: url(../images/birds.png),         linear-gradient(bottom, rgb(255,218,178) 0%, rgb(224,250,255) 49%) ;
+
+    color: #222;
+    position:relative;
 }
 
 
@@ -177,7 +180,7 @@ h2 {
 }
 
 .header {
-    background-color:rgba(0,0,0,.3);
+    background-color:rgba(0,0,0,.25);
 }
 
 .header .htitle {
@@ -185,8 +188,12 @@ h2 {
     margin:0 auto;
     overflow:visible;
 }
+.lighter {
+    color:#888;
+}
 
 .subheader {
+        padding: 5px;
        background-color:rgba(0,0,0,.04); 
 }
 
