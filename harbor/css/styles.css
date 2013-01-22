@@ -12,6 +12,11 @@ html, body {
     width:960px;
 }
 
+* {
+    font-family:'adelle';
+
+}
+
 .imonaboat {
     font-size:16px;
     font-family:'adelle';
@@ -35,14 +40,22 @@ h2 {
     overflow:hidden;
 }
 
-.title {
+.product-info {
     -webkit-transition-property: top;
     -webkit-transition-duration: 0.5s;
     position:absolute;
+    width:220px;
+    height:220px;
     top:188px;
-    bottom:0;
+}
+
+.product:hover .product-info {
+    top:0;
+}
+
+.title, .shipper {
     text-align:center;
-    background-color:rgba(0,0,0,.6);
+    background-color:rgba(0,0,118,.6);
     font-weight:normal;
     font-size:16px;
     line-height:32px;
@@ -53,23 +66,9 @@ h2 {
 }
 
 .description {
-    -webkit-transition-property: bottom;
-    -webkit-transition-duration: 0.5s;
-    position:absolute;
-    height:156px;
-    bottom:-156px;
+    height:136px;
     color:#fff;
     background-color:rgba(0,0,0,.6);
-    padding:0 5px;
+    padding:10px;
     width:100%;
-}
-
-.product:hover .title {
-    top:0;
-    bottom:auto;
-}
-
-.product:hover .description {
-    top:32px;
-    bottom:32px;
 }
