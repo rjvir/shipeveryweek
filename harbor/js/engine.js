@@ -5,6 +5,7 @@ Parse.initialize("pNZntUqXpXVmBDqDGsW7HAAvXcIRrTQrjClmy84X", "rvxSEhXIFFbkchRGyq
 
 var SHIP = SHIP || {};
 $.extend(SHIP, {
+	heightFactor: .3,
 	shipTheBox: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
 			html1 = ") href=",
@@ -56,33 +57,61 @@ $.extend(SHIP, {
 		  }
 		});
 	},
+	boundedHeight: function() {
+		var wh = $(window).height(),
+		ww = $(window).width(),
+		minBound = 300,
+		maxBound = 2000;
+		return SHIP.greatestOf([wh, ww, minBound], maxBound);
 
-	//not used cuz raj will hit me
+	},
+	//only resize boat and water. otherwise raj will hit me
+	resizeBoatnWater: function(){
+		$('.boat-left').height($(window).height() * SHIP.heightFactor);
+		$('.boat-left').offset({ bottom: 0, left: 0 });
+
+		$('.boat-right').height($(window).height() * SHIP.heightFactor);
+		$('.boat-right').offset({ bottom: 0, right: 0 });
+
+		$('.boat-middle').height($(window).height() * .33 * SHIP.heightFactor);
+		$('.black-bar').width($(window).width() * .7);
+
+		$('.blue').height($(window).height() * .2 * SHIP.heightFactor);
+	},
+
 	handleResize: function() {
-      $('#imageListHolder').height($(window).height() - 110);
-		  $('.container').width(Math.max(Math.min($(window).width(),1060), 370) - 60);
-      $('#imageListHolder, #copyright').each(function() {
-        $(this).width(Math.max(Math.min($(window).width(),1060), 370) - 80);
-      });
-      $('a.product').each(function() {
-        $(this).width($("#imageListHolder").width() - Math.floor(($("#imageListHolder").width() / 30)));
-      });
-      $('.shadeImage').each(function() {
-        $(this).remove();
-      });
+    	SHIP.resizeBoatnWater();
+
+    //   $('#imageListHolder').height($(window).height() - 110);
+		  // $('.container').width(Math.max(Math.min($(window).width(),1060), 370) - 60);
+    //   $('#imageListHolder, #copyright').each(function() {
+    //     $(this).width(Math.max(Math.min($(window).width(),1060), 370) - 80);
+    //   });
+    //   $('a.product').each(function() {
+    //     $(this).width($("#imageListHolder").width() - Math.floor(($("#imageListHolder").width() / 30)));
+    //   });
+    //   $('.shadeImage').each(function() {
+    //     $(this).remove();
+    //   });
+    
     },
     resizeToFitWindow: function () {
       $(window).resize(function(){
         SHIP.delay(function () {
           SHIP.handleResize()
-        }, 200);
+        }, 50);
       });
     },
-    greaterOf: function(a,b) {
-      if (a > b) 
-        return a;
-      else
-        return b;
+    greatestOf: function(a, up_bnd) {
+      if (a.length = 0) return 0;
+      max = a[0];
+      for (var i = 0; i< a.length; i++) {
+      	if (a[i] > max) {
+      		max = a[i];
+      	}
+      }
+      if (max > up_bnd) return up_bnd;
+      return max;
     },
     delay: (function(){
       var timer = 0;
@@ -91,10 +120,12 @@ $.extend(SHIP, {
         timer = setTimeout(callback, ms);
       };
     })(),
-    
+
 });
 
 $(function() {
      // Same as $(document).ready(function {}). TIL
      SHIP.getShipments();
+     SHIP.handleResize();
+     SHIP.resizeToFitWindow();
 });
