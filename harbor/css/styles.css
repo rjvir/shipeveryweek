@@ -4,6 +4,8 @@
 
 html, body {
     background-color:#f8f8ff;
+    background-image:url(http://subtlepatterns.com/patterns/foggy_birds.png);
+    background-repeat:repeat;
 }
 
 body {
