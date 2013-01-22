@@ -93,12 +93,13 @@ h2 {
     bottom:-100px;
 }
 
+
 .boat-left, .boat-right {
-    position:absolute;
-    bottom:0;
+    position:fixed;
     background-size:contain;
     background-repeat:no-repeat;
     background-position:bottom;
+    z-index:2;
 }
 
 .boat-left {
@@ -115,6 +116,22 @@ h2 {
     height:401px;
 }
 
+.boat-middle {
+    height:150px;
+    bottom:0;
+    position:fixed;
+    width:100%;
+    z-index:2;
+}
+
+.black-bar {
+    margin:0 auto;
+    position:relative;
+    height:100%;
+    width:780px;
+    background-color:#000;
+}
+
 .wrapper {
     margin-left:10px;
 }
@@ -123,7 +140,11 @@ h2 {
     width:100%;
     background-color:#00a;
     height:40px;
-    position:absolute;
+    position:fixed;
     bottom:0;
-    z-index:3;
+    z-index:1;
+}
+
+.boat-left, .boat-right, .boat-middle {
+    bottom:20px;
 }
