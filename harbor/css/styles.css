@@ -4,12 +4,15 @@
 
 html, body {
     background-color:#f8f8ff;
-    background-image:url(../images/boat.png);
+    background-image:url(../images/ship.png);
+    background-position:center bottom;
+    background-repeat:no-repeat;
 }
 
 .cargo {
     margin:20px auto;
     width:960px;
+    overflow:visible;
 }
 
 * {
@@ -38,6 +41,7 @@ h2 {
     display:inline-block;
     position:relative;
     overflow:hidden;
+    margin:10px;
 }
 
 .product-info {
@@ -71,4 +75,13 @@ h2 {
     background-color:rgba(0,0,0,.6);
     padding:10px;
     width:100%;
+}
+
+.boats {
+    background-image:url(../images/ship.png);
+    background-repeat:no-repeat;
+    width:1500px;
+    height:471px;
+    margin-left:-300px;
+    margin-top:-300px;
 }
