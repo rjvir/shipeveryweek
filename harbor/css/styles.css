@@ -42,7 +42,7 @@ h2 {
 
 .product-info {
     -webkit-transition-property: top;
-    -webkit-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.3s;
     position:absolute;
     width:220px;
     height:220px;
