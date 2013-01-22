@@ -13,22 +13,42 @@ var wk = week1/604800000;
 
 var weekNum = Math.floor((date - week1) / 604800000);
 
-var html0 = "<a class=product style=background-image:url(";
-var html1 = ") href="
-var html2 = "><div class=product-info><div class=title>"
-var html3 = "</div></div></a>"
+function shipTheBox(box) {
+	var html0 = "<a class=product style=background-image:url(",
+		html1 = ") href=",
+		html2 = " target=_blank><div class=product-info><div class=title>",
+		html3 = "</div><div class=description>",
+		html4 = "</div><div class=shipper>by ",
+		html5 = "</div></div></a>";
 
+	$('.freight').append(
+  			html0 + box.get("dat_boat") + 
+  			html1 + box.get("ship_to") + 
+  			html2 + box.get("title") + 
+  			html3 + box.get("description") + 
+  			html4 + box.get("shipper_name") + html5 
+  		);
+};
+
+function shuffleShipments(freight) {
+	var cargoSize = freight.length;
+	for (var i = 0; i < cargoSize; i++) {
+		var p = Math.floor(Math.random()*cargoSize);
+		var tempBox = freight[i];
+		freight[i] = freight[p]
+		freight[p] = tempBox;
+	};
+
+	for (var i = 0; i < freight.length; i++) {
+		shipTheBox(freight[i]);
+	};
+};
 
 var query = new Parse.Query(Cargo);
 query.equalTo("week", weekNum);
-query.limit(30); 
 query.find({
   success: function(results) {
-  	$.each(results, function() {
-  		$('.freight').append(
-  			html0 + this.get("dat_boat") + html1 + this.get("ship_to") + html2 + this.get("title") + html3
-  		);
-  	});
+  	shuffleShipments(results);
   },
   error: function(error) {
     alert("Error: " + error.code + " " + error.message);
