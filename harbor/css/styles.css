@@ -145,9 +145,12 @@ h2 {
 }
 
 .copyright {
-    text-align: center;
     color: #888;
     font-size: 11px;
+    position: relative;
+    width: 220px;
+    top:18px;
+    float: right;
 }
 
 .wrapper {
@@ -174,7 +177,7 @@ h2 {
 }
 
 .header {
-    background-color:rgba(0,0,0,.25);
+    background-color:rgba(0,0,0,.3);
 }
 
 .header .htitle {
