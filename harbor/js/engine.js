@@ -6,11 +6,21 @@ Parse.initialize("pNZntUqXpXVmBDqDGsW7HAAvXcIRrTQrjClmy84X", "rvxSEhXIFFbkchRGyq
 var SHIP = SHIP || {};
 $.extend(SHIP, {
 	heightFactor: .25,
+	milliWeek: 604800000,
+	milliDay: 86400000,
 	setDates: function() {
-		var today = new Date();
-		var DoW = today.getDay();
-
-
+		var today = new Date(),
+		DoW = today.getDay(),
+		milliEnd = today - (DoW * SHIP.milliDay),
+		milliBegin = milliEnd - SHIP.milliWeek + SHIP.milliDay,
+		startDay = new Date(),
+		endDay = new Date();
+		startDay.setTime(milliBegin);
+		endDay.setTime(milliEnd);
+		$('.date-range').html(
+			(startDay.getMonth()+1) + "/" + startDay.getDate() + " - " +
+			(endDay.getMonth()+1) + "/" + endDay.getDate() 
+		);
 	},
 	shipTheBox: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
@@ -21,12 +31,15 @@ $.extend(SHIP, {
 			html5 = "</div></div></a>";
 
 		$('.freight').append(
-	  			html0 + box.get("dat_boat") + 
-	  			html1 + box.get("ship_to") + 
-	  			html2 + box.get("title") + 
-	  			html3 + box.get("description") + 
-	  			html4 + box.get("shipper_name") + html5 
-	  		);
+  			html0 + box.get("dat_boat") + 
+  			html1 + box.get("ship_to") + 
+  			html2 + box.get("title") + 
+  			html3 + box.get("description") + 
+  			html4 + box.get("shipper_name") + html5 
+	  	);
+	},
+	addPalette: function() {
+		$('.freight').append("<div class=palette></div>");
 	},
 	postTheUser: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
@@ -55,6 +68,8 @@ $.extend(SHIP, {
 
 		for (var i = 0; i < freight.length; i++) {
 			SHIP.shipTheBox(freight[i]);
+			if ((i % 3) == 2) SHIP.addPalette();
+
 		};
 	},
 	shuffleUsers: function(users) {
@@ -74,8 +89,8 @@ $.extend(SHIP, {
 		var week1 = 1358846993253,
 	 	date =new Date().getTime(),
 	 	foo =date - week1,
-	 	wk =week1/604800000,
-		weekNum = Math.floor((date - week1) / 604800000);
+	 	wk =week1/SHIP.milliWeek,
+		weekNum = Math.floor((date - week1) / SHIP.milliWeek);
 		return weekNum;
 	},
 	getShipments: function() {

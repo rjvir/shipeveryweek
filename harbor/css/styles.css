@@ -57,7 +57,7 @@ h2 {
     display:inline-block;
     position:relative;
     overflow:hidden;
-    margin:10px;
+    margin:0 10px;
     background-position:center center;
     background-size:cover;
     background-repeat:no-repeat;
@@ -74,6 +74,14 @@ h2 {
 
 .product:hover .product-info {
     top:0;
+}
+
+.palette {
+    margin-top: -5px;
+    width:720px;
+    height:20px;
+    display: block;
+    background-image:url(../images/palette.png);
 }
 
 .title, .shipper {
