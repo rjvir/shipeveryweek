@@ -31,12 +31,15 @@ $.extend(SHIP, {
 			html5 = "</div></div></a>";
 
 		$('.freight').append(
-	  			html0 + box.get("dat_boat") + 
-	  			html1 + box.get("ship_to") + 
-	  			html2 + box.get("title") + 
-	  			html3 + box.get("description") + 
-	  			html4 + box.get("shipper_name") + html5 
-	  		);
+  			html0 + box.get("dat_boat") + 
+  			html1 + box.get("ship_to") + 
+  			html2 + box.get("title") + 
+  			html3 + box.get("description") + 
+  			html4 + box.get("shipper_name") + html5 
+	  	);
+	},
+	addPalette: function() {
+		$('.freight').append("<div class=palette></div>");
 	},
 	postTheUser: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
@@ -65,6 +68,8 @@ $.extend(SHIP, {
 
 		for (var i = 0; i < freight.length; i++) {
 			SHIP.shipTheBox(freight[i]);
+			if ((i % 3) == 2) SHIP.addPalette();
+
 		};
 	},
 	shuffleUsers: function(users) {
