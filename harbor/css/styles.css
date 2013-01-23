@@ -118,14 +118,14 @@ h2 {
 
 .boat-left {
     background-image:url(../images/ship_left.png);
-    left:0;
+    left:-50px;
     width:338px;
     height:401px;
 }
 
 .boat-right {
     background-image:url(../images/ship_right.png);
-    right:0;
+    right:-20px;
     width:335px;
     height:401px;
 }
@@ -154,6 +154,13 @@ h2 {
     width: 220px;
     top:18px;
     float: right;
+    text-decoration: none;
+    color:#FFF;
+}
+
+.copyright a {
+  text-decoration: none;
+    color:#BBB;  
 }
 
 .wrapper {
@@ -170,14 +177,41 @@ h2 {
 }
 
 .boat-left, .boat-right, .boat-middle {
-    bottom:11px;
+    bottom:0px;
 }
 
 .navbar {
     width:100%;
-    background-color:#222;
-    padding:10px 0;
+    background-color:#333;
 }
+
+
+#nav {
+    width: 720px;
+    margin:0 auto;
+    /*float: left;*/
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+    background-color: #333;
+}
+
+#nav li {
+    float: left; 
+    list-style: none;
+    margin: 0;
+}
+#nav li a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #AAA;
+    border-right: 1px solid #555; }
+#nav li a:hover {
+    color: #CCC;
+    background-color: #444; }
+
 
 .header {
     background-color:rgba(0,0,0,.25);

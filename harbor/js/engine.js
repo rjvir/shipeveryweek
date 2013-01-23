@@ -6,6 +6,12 @@ Parse.initialize("pNZntUqXpXVmBDqDGsW7HAAvXcIRrTQrjClmy84X", "rvxSEhXIFFbkchRGyq
 var SHIP = SHIP || {};
 $.extend(SHIP, {
 	heightFactor: .25,
+	setDates: function() {
+		var today = new Date();
+		var DoW = today.getDay();
+
+
+	},
 	shipTheBox: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
 			html1 = ") href=",
@@ -22,6 +28,22 @@ $.extend(SHIP, {
 	  			html4 + box.get("shipper_name") + html5 
 	  		);
 	},
+	postTheUser: function(box) {
+		var html0 = "<a class=product style=background-image:url(",
+			html1 = ") href=",
+			html2 = " target=_blank><div class=product-info><div class=title>",
+			html3 = "</div><div class=description>",
+			html4 = "</div><div class=shipper>by ",
+			html5 = "</div></div></a>";
+
+		$('.crew').append(
+	  			html0 + box.get("dat_face") + 
+	  			html1 + box.get("harbor") + 
+	  			html2 + box.get("FullName") + 
+	  			html3 + box.get("description") + 
+	  			html4 + box.get("harbor") + html5 
+	  		);
+	},
 	shuffleShipments: function(freight) {
 		var cargoSize = freight.length;
 		for (var i = 0; i < cargoSize; i++) {
@@ -33,6 +55,19 @@ $.extend(SHIP, {
 
 		for (var i = 0; i < freight.length; i++) {
 			SHIP.shipTheBox(freight[i]);
+		};
+	},
+	shuffleUsers: function(users) {
+		var cargoSize = users.length;
+		for (var i = 0; i < cargoSize; i++) {
+			var p = Math.floor(Math.random()*cargoSize);
+			var tempBox = users[i];
+			users[i] = users[p]
+			users[p] = tempBox;
+		};
+
+		for (var i = 0; i < users.length; i++) {
+			SHIP.postTheUser(users[i]);
 		};
 	},
 	getWeekNum: function() {
@@ -57,6 +92,21 @@ $.extend(SHIP, {
 		  }
 		});
 	},
+	getShippers: function() {
+		var Shippers = Parse.Object.extend("User"),
+		shipper = new Shippers(),
+		query = new Parse.Query(Shippers);
+		query.equalTo("verified", true);
+		query.find({
+		  success: function(results) {
+		  	SHIP.shuffleUsers(results);
+		  },
+		  error: function(error) {
+		    alert("Error: " + error.code + " " + error.message);
+		  }
+		});
+	},
+	
 	boundedHeight: function() {
 		var wh = $(window).height(),
 		ww = $(window).width() * .8,
@@ -85,25 +135,13 @@ $.extend(SHIP, {
 
 	handleResize: function() {
     	SHIP.resizeBoatnWater();
-
-    //   $('#imageListHolder').height($(window).height() - 110);
-		  // $('.container').width(Math.max(Math.min($(window).width(),1060), 370) - 60);
-    //   $('#imageListHolder, #copyright').each(function() {
-    //     $(this).width(Math.max(Math.min($(window).width(),1060), 370) - 80);
-    //   });
-    //   $('a.product').each(function() {
-    //     $(this).width($("#imageListHolder").width() - Math.floor(($("#imageListHolder").width() / 30)));
-    //   });
-    //   $('.shadeImage').each(function() {
-    //     $(this).remove();
-    //   });
-    
+   
     },
     resizeToFitWindow: function () {
       $(window).resize(function(){
         SHIP.delay(function () {
           SHIP.handleResize()
-        }, 50);
+        }, 10);
       });
     },
     delay: (function(){
@@ -118,7 +156,9 @@ $.extend(SHIP, {
 
 $(function() {
      // Same as $(document).ready(function {}). TIL
+     SHIP.setDates();
      SHIP.getShipments();
+     SHIP.getShippers();
      SHIP.handleResize();
      SHIP.resizeToFitWindow();
 });
