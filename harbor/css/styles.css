@@ -35,22 +35,19 @@ body {
 }
 
 * {
-    font-family:'adelle';
+    font-family:'futura-pt';
 
 }
 
 .imonaboat {
     font-size:16px;
-    font-family:'adelle';
 }
 
 h1 {
-    font-family:'adelle';
     font-size:48px;
 }
 
 h2 {
-    font-family:'adelle';
     font-size:28px;
 }
 
@@ -60,8 +57,10 @@ h2 {
     display:inline-block;
     position:relative;
     overflow:hidden;
-    margin:6px;
+    margin:10px;
     background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
 }
 
 .product-info {
@@ -196,6 +195,10 @@ h2 {
     background-color: #333;
 }
 
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset, figure {
+    margin-bottom:0;
+}
+
 #nav li {
     float: left; 
     list-style: none;
@@ -214,7 +217,7 @@ h2 {
 
 
 .header {
-    background-color:rgba(0,0,0,.25);
+    background-color:rgba(0,0,0,.04);
 }
 
 .header .htitle {
@@ -235,4 +238,16 @@ h2 {
     width:720px;
     margin:0 auto;
     overflow:visible;
+}
+
+.container {
+    width:700px;
+    margin:0 auto;
+    padding:20px 10px;
+}
+
+.date-range {
+    color:#888;
+    font-size:20px;
+    display:inline-block;
 }
