@@ -225,13 +225,15 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset, figure
     margin:0 auto;
     overflow:visible;
 }
+
 .lighter {
-    color:#888;
+    color:#333344;
+    text-shadow:0 0 2px #333388;
 }
 
 .subheader {
-        padding: 5px;
-       background-color:rgba(0,0,0,.04); 
+    padding: 5px;
+    background-color:rgba(0,0,0,.04); 
 }
 
 .subheader .imonaboat {
@@ -250,4 +252,8 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset, figure
     color:#888;
     font-size:20px;
     display:inline-block;
+}
+
+.page {
+    margin-top:40px;
 }
