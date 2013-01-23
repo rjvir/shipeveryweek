@@ -6,11 +6,21 @@ Parse.initialize("pNZntUqXpXVmBDqDGsW7HAAvXcIRrTQrjClmy84X", "rvxSEhXIFFbkchRGyq
 var SHIP = SHIP || {};
 $.extend(SHIP, {
 	heightFactor: .25,
+	milliWeek: 604800000,
+	milliDay: 86400000,
 	setDates: function() {
-		var today = new Date();
-		var DoW = today.getDay();
-
-
+		var today = new Date(),
+		DoW = today.getDay(),
+		milliEnd = today - (DoW * SHIP.milliDay),
+		milliBegin = milliEnd - SHIP.milliWeek + SHIP.milliDay,
+		startDay = new Date(),
+		endDay = new Date();
+		startDay.setTime(milliBegin);
+		endDay.setTime(milliEnd);
+		$('.date-range').html(
+			(startDay.getMonth()+1) + "/" + startDay.getDate() + " - " +
+			(endDay.getMonth()+1) + "/" + endDay.getDate() 
+		);
 	},
 	shipTheBox: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
@@ -74,8 +84,8 @@ $.extend(SHIP, {
 		var week1 = 1358846993253,
 	 	date =new Date().getTime(),
 	 	foo =date - week1,
-	 	wk =week1/604800000,
-		weekNum = Math.floor((date - week1) / 604800000);
+	 	wk =week1/SHIP.milliWeek,
+		weekNum = Math.floor((date - week1) / SHIP.milliWeek);
 		return weekNum;
 	},
 	getShipments: function() {
