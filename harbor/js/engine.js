@@ -22,15 +22,15 @@ $.extend(SHIP, {
 			(endDay.getMonth()+1) + "/" + endDay.getDate() 
 		);
 	},
-	shipTheBox: function(box) {
-		var html0 = "<a class=product style=background-image:url(",
+	shipTheBox: function(box, styleName) {
+		var html0 = "<a class='product " + styleName + " 'style=background-image:url(",
 			html1 = ") href=",
 			html2 = " target=_blank><div class=product-info><div class=title>",
 			html3 = "</div><div class=description>",
 			html4 = "</div><div class=shipper>by ",
 			html5 = "</div></div></a>";
 
-		$('.freight').append(
+		$('.freight').prepend(
   			html0 + box.get("dat_boat") + 
   			html1 + box.get("ship_to") + 
   			html2 + box.get("title") + 
@@ -39,7 +39,7 @@ $.extend(SHIP, {
 	  	);
 	},
 	addPalette: function() {
-		$('.freight').append("<div class=palette></div>");
+		$('.freight').prepend("<div class=palette></div>");
 	},
 	postTheUser: function(box) {
 		var html0 = "<a class=product style=background-image:url(",
@@ -49,7 +49,7 @@ $.extend(SHIP, {
 			html4 = "</div><div class=shipper>by ",
 			html5 = "</div></div></a>";
 
-		$('.crew').append(
+		$('.crew').prepend(
 	  			html0 + box.get("dat_face") + 
 	  			html1 + box.get("harbor") + 
 	  			html2 + box.get("FullName") + 
@@ -65,12 +65,28 @@ $.extend(SHIP, {
 			freight[i] = freight[p]
 			freight[p] = tempBox;
 		};
+		SHIP.addPalette();
+		if ((cargoSize % 3) == 1) {
+			for (var i = 0; i < freight.length - 1; i++) {
+				SHIP.shipTheBox(freight[i], null);
+				if ((i % 3) == 2) SHIP.addPalette();
+			};
+			SHIP.shipTheBox(freight[cargoSize-1], 'top1');
+		
+		} else if ((cargoSize % 3) == 2) {
+			for (var i = 0; i < freight.length - 2; i++) {
+				SHIP.shipTheBox(freight[i], null);
+				if ((i % 3) == 2) SHIP.addPalette();
+			};
+			SHIP.shipTheBox(freight[cargoSize-2], 'top2');
+			SHIP.shipTheBox(freight[cargoSize-1], 'top2');
 
-		for (var i = 0; i < freight.length; i++) {
-			SHIP.shipTheBox(freight[i]);
-			if ((i % 3) == 2) SHIP.addPalette();
-
-		};
+		} else {
+			for (var i = 0; i < freight.length; i++) {
+				SHIP.shipTheBox(freight[i], null);
+				if ((i % 3) == 2) SHIP.addPalette();
+			};
+		}
 	},
 	shuffleUsers: function(users) {
 		var cargoSize = users.length;

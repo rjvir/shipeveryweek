@@ -51,6 +51,17 @@ h2 {
     font-size:28px;
 }
 
+.shadebox {
+    font-size: 18px;
+    color:#444;
+    display:block;
+    width:720px;
+    height:300px;
+    margin: 10px auto;
+    background: rgba(0, 0, 0, .2);
+    padding:10px;
+}
+
 .product {
     width:220px;
     height:220px;
@@ -61,6 +72,14 @@ h2 {
     background-position:center center;
     background-size:cover;
     background-repeat:no-repeat;
+}
+
+.top1 {
+    margin: 0 250px;
+}
+
+.top2 {
+    margin: 0 70px;
 }
 
 .product-info {
